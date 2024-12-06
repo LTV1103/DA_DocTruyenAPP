@@ -7,105 +7,20 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="#FF0000"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:paddingLeft="15dp"
-            android:text="TRANG CHỦ" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-
-        <ImageButton
-            android:id="@+id/img_search"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="5pt"
-            android:src="@drawable/find"
-            android:scaleType="fitXY"
-            android:backgroundTint="@color/white"
-            android:layout_gravity="center_vertical|end"/>
-
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TOP "
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="17dp"/>
-
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="40dp"
-            android:src="@drawable/wheat"
-            android:scaleType="fitXY" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" TRUYỆN"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="17dp"/>
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="5dp">
-
-        <ImageView
-            android:id="@+id/bannerImage"
-            android:layout_width="400dp"
-            android:layout_height="180dp"
-            android:contentDescription="Banner"
-            android:src="@drawable/banner"
-            android:scaleType="fitXY" />
-    </androidx.cardview.widget.CardView>
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Thư Viện Truyện"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:gravity="center"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:text="DẤU TRANG CỦA BẠN" />
 
-    <GridView
-        android:id="@+id/gvTruyen"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:numColumns="3"
-        android:padding="10dp" />
-
+        android:paddingTop="10dp"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -120,33 +35,31 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:clickable="true"
+            android:orientation="vertical"
             android:gravity="center"
             android:paddingTop="5dp"
-            android:orientation="vertical">
+            android:clickable="true" >
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:src="@drawable/home"
                 android:backgroundTint="@color/white"
-                android:paddingBottom="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/homered" />
+                android:paddingBottom="0dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="0dp"
                 android:text="TRANG CHỦ"
-                android:textColor="#FF0000"
                 android:textSize="13dp"
-                android:textStyle="bold" />
+                android:paddingTop="0dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnTag"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -208,7 +121,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/bookmark"
+                android:src="@drawable/bookmarkred"
                 android:backgroundTint="@color/white"
                 android:scaleType="fitXY"
                 android:paddingBottom="0dp"/>
@@ -218,6 +131,8 @@
                 android:layout_height="wrap_content"
                 android:text="DẤU TRANG"
                 android:textSize="13dp"
+                android:textColor="#FF0000"
+                android:textStyle="bold"
                 android:paddingTop="0dp" />
         </LinearLayout>
 
