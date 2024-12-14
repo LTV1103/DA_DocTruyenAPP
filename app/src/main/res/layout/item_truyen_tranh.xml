@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Hình ảnh bìa truyện -->
+    <ImageView
+        android:id="@+id/img_cover"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <!-- Tiêu đề truyện -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tiêu đề truyện"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <!-- Tác giả truyện -->
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tác giả: Tên tác giả"
+        android:textSize="14sp"
+        android:textColor="#666666" />
+
+    <!-- Mô tả ngắn -->
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Mô tả ngắn về truyện tranh này."
+        android:textSize="14sp"
+        android:textColor="#666666" />
+
+</LinearLayout>
