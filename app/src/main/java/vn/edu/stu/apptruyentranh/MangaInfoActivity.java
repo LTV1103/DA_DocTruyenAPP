@@ -2,11 +2,10 @@ package vn.edu.stu.apptruyentranh;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,19 +15,26 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.stu.apptruyentranh.api.APIClient;
 import vn.edu.stu.apptruyentranh.api.APIService;
 import vn.edu.stu.apptruyentranh.api.reponse.TruyenTranh;
+import vn.edu.stu.apptruyentranh.fragments.MangaInfoFragment;
 
 public class MangaInfoActivity extends AppCompatActivity {
 
-    private ImageView imgCover;
+    private ImageView imgCover; // Hiển thị ảnh bìa truyện
     private TextView tvTitle, tvStatus, tvAuthor, tvTag, tvDescribe;
-    private Button btnRead, btnChapter,btnback;
-    private int truyenTranhId;
+    private Button btnRead, btnChapter, btnBack;
+    private int truyenTranhId; // ID của truyện tranh
+    private List<String> imageUrls = new ArrayList<>(); // Danh sách chứa URL ảnh
+    private TruyenTranh truyenTranh;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +50,13 @@ public class MangaInfoActivity extends AppCompatActivity {
         addControls();
         addEvents();
 
-        truyenTranhId = getIntent().getIntExtra("truyenTranhId", -1);
+        int truyenTranhId = getIntent().getIntExtra("truyenTranhId", -1);
         if (truyenTranhId != -1) {
             fetchTruyenTranh(truyenTranhId);
+            MangaInfoFragment fragment = MangaInfoFragment.newInstance(truyenTranhId);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
         } else {
             Log.e("MangaInfoActivity", "No truyenTranhId provided");
         }
@@ -56,64 +66,56 @@ public class MangaInfoActivity extends AppCompatActivity {
         imgCover = findViewById(R.id.img_Cover);
         tvTitle = findViewById(R.id.tvTitle);
         tvStatus = findViewById(R.id.tvStatus);
-        tvAuthor = findViewById(R.id.tvAuthor);
-        tvTag = findViewById(R.id.tvTag);
-        btnback = findViewById(R.id.btn_Back);
-        tvDescribe = findViewById(R.id.tvDescribe);
+        btnBack = findViewById(R.id.btnBack);
         btnRead = findViewById(R.id.btnRead);
-        btnChapter = findViewById(R.id.btnChapter);
     }
 
     private void addEvents() {
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        btnChapter.setOnClickListener(v -> {
-            Intent intent = new Intent(MangaInfoActivity.this, ChapterListActivity.class);
+        btnBack.setOnClickListener(v -> finish());
+        btnRead.setOnClickListener(v -> {
+            Intent intent = new Intent(MangaInfoActivity.this, ReadActivity.class);
             intent.putExtra("truyenTranhId", truyenTranhId);
-            intent.putExtra("title", tvTitle.getText().toString());
-            intent.putExtra("status", tvStatus.getText().toString());
             startActivity(intent);
-        });
+        });            // Xử lý sự kiện khi nhấn nút Đọc từ đầu
+
     }
 
     private void fetchTruyenTranh(int id) {
         APIService apiService = APIClient.getRetrofitInstance().create(APIService.class);
         Call<TruyenTranh> call = apiService.getComicById(id);
-
         call.enqueue(new Callback<TruyenTranh>() {
             @Override
             public void onResponse(Call<TruyenTranh> call, Response<TruyenTranh> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     TruyenTranh truyenTranh = response.body();
-                    updateUI(truyenTranh);
+                    updateUI(truyenTranh); // Cập nhật giao diện với thông tin truyện
+                    // Lấy các URL ảnh bìa nếu có
+                    if (truyenTranh.getAnhBia() != null) {
+                        String imageUrl = "https://res.cloudinary.com/dsyeobmcl/image/upload/AnhBia/" + truyenTranh.getAnhBia();
+                        Glide.with(MangaInfoActivity.this)
+                                .load(imageUrl)
+                                .placeholder(R.drawable.ic_launcher_background)
+                                .error(R.drawable.ic_launcher_foreground)
+                                .into(imgCover);
+                    }
                 } else {
-                    Log.e("MangaInfoActivity", "Response unsuccessful: " + response.message());
+                    Log.e("MangaInfoActivity", "Kết quả không thành công: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<TruyenTranh> call, Throwable t) {
-                Log.e("MangaInfoActivity", "Error fetching data", t);
+                Log.e("MangaInfoActivity", "Lỗi khi lấy dữ liệu", t);
             }
         });
     }
 
+    // Cập nhật giao diện với thông tin truyện
     private void updateUI(TruyenTranh truyenTranh) {
         tvTitle.setText(truyenTranh.getTenTruyen());
         tvStatus.setText(truyenTranh.getTrangThai());
-        tvAuthor.setText(truyenTranh.getTacGia());
-        tvTag.setText(truyenTranh.getTheLoai());
-        tvDescribe.setText(truyenTranh.getMoTa());
 
-        String imageUrl = "http://your-image-base-url/" + truyenTranh.getAnhBia();
-        Glide.with(this)
-                .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_foreground)
-                .into(imgCover);
+
     }
+
 }

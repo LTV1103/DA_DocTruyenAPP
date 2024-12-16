@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="❮"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:textSize="20dp"
+            android:minWidth="40dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="ĐỔI MẬT KHẨU"
+            android:textColor="#FF0000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="40dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"/>
+
+
+    <EditText
+        android:id="@+id/edtOldPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Nhập mật khẩu cũ của bạn"
+        android:inputType="textPassword"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:id="@+id/edtNewPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Mật khẩu mới (ít nhất 6 ký tự)"
+        android:inputType="textPassword"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:id="@+id/edtConfirmPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Xác nhận mật khẩu"
+        android:inputType="textPassword"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:id="@+id/btnComfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Xác nhận"
+        android:backgroundTint="#2196F3"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

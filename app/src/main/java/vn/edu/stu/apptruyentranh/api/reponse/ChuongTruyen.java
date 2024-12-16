@@ -1,6 +1,11 @@
 package vn.edu.stu.apptruyentranh.api.reponse;
 
-public class ChuongTruyen {
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class ChuongTruyen implements Serializable {
     private int chuongTruyenId;
     private String truyenTranhId;
     private String tenChuong;
@@ -48,5 +53,22 @@ public class ChuongTruyen {
 
     public void setHinhAnhTruyen(String hinhAnhTruyen) {
         this.hinhAnhTruyen = hinhAnhTruyen;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date releaseDate = formatter.parse(ngayPhatHanh);
+            Date currentDate = new Date();
+            if (releaseDate.after(currentDate)) {
+                return String.format("%-30s %s", tenChuong, "chưa phát hành");
+            } else {
+                return String.format("%-30s %s", tenChuong, "phát hành: " + ngayPhatHanh);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return tenChuong;
+        }
     }
 }

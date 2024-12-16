@@ -19,19 +19,22 @@
             android:name=".ReadActivity"
             android:exported="false" />
         <activity
-            android:name=".Read"
+            android:name=".BougthActivity"
             android:exported="false" />
         <activity
-            android:name=".ChapterListActivity"
+            android:name=".FixPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".UserActivity"
             android:exported="false" />
         <activity
             android:name=".BookmarkActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BougthActivity"
             android:exported="false" />
         <activity
             android:name=".TagActivity"

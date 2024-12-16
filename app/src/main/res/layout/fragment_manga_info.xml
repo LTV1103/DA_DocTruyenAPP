@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="#3F51B5"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnChapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chapter"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Tác giả:"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:hint="Tác giả"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="Thể loại:"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:hint="thể loại"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvDescribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:hint="Naruto là một loạt manga Nhật Bản...vvvvv"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"/>
+</LinearLayout>
