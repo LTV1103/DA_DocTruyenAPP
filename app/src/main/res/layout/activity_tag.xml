@@ -43,7 +43,7 @@
         android:id="@+id/gvTag"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:numColumns="4"
+        android:numColumns="3"
         android:gravity="center" />
 
     <RadioGroup
@@ -52,7 +52,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvTagNamw"
+            android:id="@+id/theLoai"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -62,25 +62,25 @@
             android:textColor="@color/black"
             android:textSize="17dp"/>
 
-        <RadioButton
-            android:id="@+id/btnNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Mới nhất"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+<!--        <RadioButton-->
+<!--            android:id="@+id/btnNew"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginRight="30dp"-->
+<!--            android:text="Mới nhất"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textStyle="bold" />-->
 
-        <RadioButton
-            android:id="@+id/btnFull"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:text="Đã Full"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="15dp" />
+<!--        <RadioButton-->
+<!--            android:id="@+id/btnFull"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginRight="15dp"-->
+<!--            android:text="Đã Full"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp" />-->
     </RadioGroup>
 
     <GridView

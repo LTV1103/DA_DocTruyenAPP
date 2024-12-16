@@ -53,9 +53,11 @@ public class TruyenTranhAdapter extends BaseAdapter {
         // Tìm các view trong item
         ImageView imgCover = convertView.findViewById(R.id.img_cover);
         TextView tvTitle = convertView.findViewById(R.id.tv_title);
+        TextView tvTheLoai = convertView.findViewById(R.id.tv_theloai);
 
         // Hiển thị tên truyện
         tvTitle.setText(truyenTranh.getTenTruyen());
+        tvTheLoai.setText(truyenTranh.getTacGia());
 
         // Xử lý URL ảnh bìa
         String imageUrl = truyenTranh.getAnhBia();

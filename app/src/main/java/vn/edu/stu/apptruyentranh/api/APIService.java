@@ -27,11 +27,22 @@ public interface APIService {
     @GET("/api/nguoidung/tenDangNhap/{tenDangNhap}")
     Call<NguoiDung> getUserByTenDangNhap(@Path("tenDangNhap") String tenDangNhap);
 
+    @GET("/api/truyentranh/theloai")
+    Call<List<String>> getAllCategories();
+
+
     @POST("/api/nguoidung")
     Call<NguoiDung> saveUser(@Body NguoiDung user);
 
     @POST("/api/nguoidung/create")
     Call<NguoiDung> createUser(@Body NguoiDung user);
+
+
+    @GET("/api/truyentranh/theloai/{theLoai}")
+    Call<List<TruyenTranh>> searchTruyenByCategory(@Path("theLoai") String category);
+
+
+
 
 
 
