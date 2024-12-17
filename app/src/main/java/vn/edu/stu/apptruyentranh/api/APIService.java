@@ -1,13 +1,16 @@
 package vn.edu.stu.apptruyentranh.api;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import vn.edu.stu.apptruyentranh.api.reponse.ChuongTruyen;
+import vn.edu.stu.apptruyentranh.api.reponse.DanhDauTrang;
 import vn.edu.stu.apptruyentranh.api.reponse.NguoiDung;
 import vn.edu.stu.apptruyentranh.api.reponse.TruyenTranh;
 
@@ -46,4 +49,14 @@ public interface APIService {
     Call<List<TruyenTranh>> findByTen(@Path("tentruyen") String tenTruyen);
 
 
+    @POST("/api/danhdautrang/save/{nguoiDungId}/{chuongtruyenId}")
+    Call<DanhDauTrang> saveBookmark(@Path("nguoiDungId") String nguoiDungId, @Path("chuongtruyenId") String chuongtruyenId);
+
+    @GET("/api/danhdautrang/nguoidung/{id}")
+    Call<List<DanhDauTrang>> getBookmarksByUserId(@Path("id") String userId);
 }
+
+
+
+
+
