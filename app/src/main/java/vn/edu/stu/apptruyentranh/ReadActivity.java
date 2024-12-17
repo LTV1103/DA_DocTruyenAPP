@@ -4,6 +4,7 @@
     import android.util.Log;
     import android.view.View;
     import android.widget.Button;
+    import android.widget.ImageButton;
     import android.widget.ListView;
     import android.widget.TextView;
 
@@ -12,8 +13,6 @@
     import androidx.core.graphics.Insets;
     import androidx.core.view.ViewCompat;
     import androidx.core.view.WindowInsetsCompat;
-
-    import com.bumptech.glide.Glide;
 
     import java.util.ArrayList;
     import java.util.List;
@@ -26,7 +25,8 @@
     import vn.edu.stu.apptruyentranh.api.APIService;
 
     public class ReadActivity extends AppCompatActivity {
-        Button btn_Back, btn_tym;
+        Button btn_Back;
+        ImageButton btn_tym ;
         int chuongtruyenId;
         private ListView lvRead;
         TextView tvTitle;

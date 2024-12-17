@@ -20,6 +20,13 @@ public class TruyenTranhAdapter extends BaseAdapter {
     private Context context;
     private List<TruyenTranh> truyenTranhList;
 
+    // ViewHolder pattern to cache views
+    static class ViewHolder {
+        ImageView imgCover;
+        TextView tvTitle;
+        TextView tvTheLoai;
+    }
+
     public TruyenTranhAdapter(Context context, List<TruyenTranh> truyenTranhList) {
         this.context = context;
         this.truyenTranhList = truyenTranhList;
@@ -42,46 +49,56 @@ public class TruyenTranhAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Nếu convertView là null, tạo mới
+        ViewHolder viewHolder;
+
+        // Recycle the view using the ViewHolder pattern
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_truyen_tranh, parent, false);
+
+            // Initialize the ViewHolder and set it as the tag for the view
+            viewHolder = new ViewHolder();
+            viewHolder.imgCover = convertView.findViewById(R.id.img_cover);
+            viewHolder.tvTitle = convertView.findViewById(R.id.tv_title);
+            viewHolder.tvTheLoai = convertView.findViewById(R.id.tv_theloai);
+
+            convertView.setTag(viewHolder); // Save the ViewHolder as a tag
+        } else {
+            // Reuse the ViewHolder
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Lấy dữ liệu của truyện tranh từ danh sách
+        // Get the current comic
         TruyenTranh truyenTranh = (TruyenTranh) getItem(position);
 
-        // Tìm các view trong item
-        ImageView imgCover = convertView.findViewById(R.id.img_cover);
-        TextView tvTitle = convertView.findViewById(R.id.tv_title);
-        TextView tvTheLoai = convertView.findViewById(R.id.tv_theloai);
+        // Set the data
+        viewHolder.tvTitle.setText(truyenTranh.getTenTruyen());
+        viewHolder.tvTheLoai.setText(truyenTranh.getTacGia());
 
-        // Hiển thị tên truyện
-        tvTitle.setText(truyenTranh.getTenTruyen());
-        tvTheLoai.setText(truyenTranh.getTacGia());
-
-        // Xử lý URL ảnh bìa
+        // Handle cover image
         String imageUrl = truyenTranh.getAnhBia();
         if (imageUrl != null && !imageUrl.isEmpty()) {
-            // Nếu URL không phải là URL đầy đủ, bổ sung domain
             if (!imageUrl.startsWith("http")) {
                 imageUrl = "https://res.cloudinary.com/dsyeobmcl/image/upload/AnhBia/" + imageUrl;
             }
 
-            // Sử dụng Glide để tải ảnh
             Glide.with(context)
-                    .load(imageUrl)  // URL ảnh truyện
+                    .load(imageUrl)
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.ic_launcher_background) // Ảnh mặc định khi đang tải
-                            .error(R.drawable.ic_launcher_foreground)     // Ảnh lỗi khi không tải được
-                            .centerCrop())  // Đảm bảo ảnh đầy đủ và cắt bỏ phần không cần thiết
-                    .into(imgCover);
+                            .placeholder(R.drawable.ic_launcher_background)
+                            .error(R.drawable.ic_launcher_foreground)
+                            .centerCrop())
+                    .into(viewHolder.imgCover);
         } else {
-            // Nếu không có URL ảnh, sử dụng ảnh mặc định
             Glide.with(context)
                     .load(R.drawable.ic_launcher_background)
-                    .into(imgCover);
+                    .into(viewHolder.imgCover);
         }
 
         return convertView;
+    }
+
+    public void updateList(List<TruyenTranh> newList) {
+        this.truyenTranhList = newList;
+        notifyDataSetChanged();
     }
 }

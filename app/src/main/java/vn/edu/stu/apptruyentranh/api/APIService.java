@@ -42,14 +42,8 @@ public interface APIService {
     Call<List<TruyenTranh>> searchTruyenByCategory(@Path("theLoai") String category);
 
 
-
-
-
-
-
-
-
-
+    @GET("/api/truyentranh/timkiem/{tentruyen}")
+    Call<List<TruyenTranh>> findByTen(@Path("tentruyen") String tenTruyen);
 
 
 }
